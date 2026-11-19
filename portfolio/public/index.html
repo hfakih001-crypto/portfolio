@@ -41,7 +41,7 @@ p{margin:0 0 1em;max-width:68ch}
 
 /* hero */
 .hero{padding-top:72px}
-.hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero .grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
 .hero .role{font:500 .95rem var(--mono);color:var(--wire);margin-bottom:18px}
 h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800;margin-bottom:24px}
 .hero .lede{font-size:1.2rem;color:var(--muted)}
@@ -51,14 +51,6 @@ h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800;margin-bottom:24px}
 .btn.ghost{color:var(--signal)}
 .btn:hover{transform:translateY(-1px)}
 .meta{font:400 .92rem var(--mono);color:var(--muted)}
-.topo{width:100%;height:auto}
-.topo .edge{stroke:var(--line);stroke-width:2;fill:none}
-.topo .pulse{stroke:var(--signal);stroke-width:3;fill:none;stroke-dasharray:10 150;stroke-linecap:round;animation:flow 3.2s linear infinite}
-.topo .pulse.b{animation-delay:-1.6s;stroke:var(--wire)}
-.topo circle{fill:var(--card);stroke:var(--ink);stroke-width:2.5}
-.topo circle.core{fill:var(--signal);stroke:var(--signal)}
-.topo text{font:500 11px var(--mono);fill:var(--muted)}
-@keyframes flow{to{stroke-dashoffset:-320}}
 
 /* layers */
 .layers{display:grid;grid-template-columns:minmax(240px,.8fr) 1.2fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -103,15 +95,14 @@ h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800;margin-bottom:24px}
 footer{padding:22px 0 40px;color:var(--muted);font-size:.9rem}
 
 @media (max-width:820px){
-  .hero .grid,.layers{grid-template-columns:1fr}
+  .layers{grid-template-columns:1fr}
   .tabs{border-right:0;border-bottom:1px solid var(--line)}
   .entry{grid-template-columns:1fr;gap:6px}
   .skill-row{grid-template-columns:1fr;gap:2px}
   .nav ul{gap:14px;font-size:.88rem}
-  .topo{max-width:420px}
 }
 @media (max-width:520px){.nav ul li:nth-child(n+4){display:none}}
-@media (prefers-reduced-motion:reduce){.topo .pulse{animation:none;stroke-dasharray:none}html{scroll-behavior:auto}.btn:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -134,20 +125,6 @@ footer{padding:22px 0 40px;color:var(--muted);font-size:.9rem}
     </div>
     <p class="meta">Saida, Lebanon · hfakih001@gmail.com</p>
   </div>
-  <svg class="topo" viewBox="0 0 360 320" role="img" aria-label="Network topology diagram with packets travelling between nodes">
-    <path id="e1" class="edge" d="M180 40 L70 130"/><path id="e2" class="edge" d="M180 40 L290 130"/>
-    <path id="e3" class="edge" d="M70 130 L40 250"/><path id="e4" class="edge" d="M70 130 L130 250"/>
-    <path id="e5" class="edge" d="M290 130 L230 250"/><path id="e6" class="edge" d="M290 130 L320 250"/>
-    <path id="e7" class="edge" d="M70 130 L290 130"/>
-    <path class="pulse" d="M180 40 L70 130 L130 250"/>
-    <path class="pulse b" d="M320 250 L290 130 L180 40"/>
-    <circle class="core" cx="180" cy="40" r="15"/>
-    <circle cx="70" cy="130" r="12"/><circle cx="290" cy="130" r="12"/>
-    <circle cx="40" cy="250" r="9"/><circle cx="130" cy="250" r="9"/><circle cx="230" cy="250" r="9"/><circle cx="320" cy="250" r="9"/>
-    <text x="180" y="12" text-anchor="middle">router</text>
-    <text x="70" y="108" text-anchor="middle">switch</text><text x="290" y="108" text-anchor="middle">switch</text>
-    <text x="40" y="282" text-anchor="middle">host</text><text x="130" y="282" text-anchor="middle">host</text><text x="230" y="282" text-anchor="middle">host</text><text x="320" y="282" text-anchor="middle">host</text>
-  </svg>
 </div></section>
 
 <section id="about"><div class="wrap">
