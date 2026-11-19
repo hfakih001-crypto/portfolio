@@ -3,270 +3,758 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hussein Fakih — Networks & Telecommunications Engineering</title>
-<meta name="description" content="3rd-year Computer Networks and Telecommunications student at the Lebanese University. Programming, electronics and network simulation, from the transistor to the routing table.">
-<meta property="og:title" content="Hussein Fakih — Networks & Telecommunications Engineering">
+<title>Hussein Fakih — Networks, Telecommunications & Software Engineering</title>
+<meta name="description" content="3rd-year Computer Networks and Telecommunications student at the Lebanese University. Programming, AI agents, electronics and network simulation — from the transistor to the routing table.">
+<meta property="og:title" content="Hussein Fakih — Networks, Telecommunications & Software Engineering">
 <meta property="og:description" content="From the transistor to the routing table. Portfolio of Hussein Fakih.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#EEF2F6; --card:#FFFFFF; --ink:#13233A; --muted:#4F5F75; --line:#CBD5E1;
-  --signal:#1D4ED8; --signal-ink:#FFFFFF; --wire:#0E7C86;
-  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --paper:#F1F5F9;
+  --paper-elev:#FFFFFF;
+  --card:rgba(255,255,255,.86);
+  --card-solid:#FFFFFF;
+  --ink:#0F1E33;
+  --muted:#475569;
+  --line:#CBD5E1;
+  --signal:#1D4ED8;
+  --signal-soft:rgba(29,78,216,.10);
+  --signal-ink:#FFFFFF;
+  --wire:#0D9488;
+  --wire-soft:rgba(13,148,136,.12);
+  --grid-line:rgba(15,30,51,.05);
+  --shadow-sm:0 4px 16px rgba(15,30,51,.04);
+  --shadow-md:0 16px 40px rgba(15,30,51,.08);
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--paper:#0F1B2D;--card:#16263D;--ink:#E7EEF8;--muted:#9FB1C8;--line:#2A3E5A;--signal:#7AA2FF;--signal-ink:#0F1B2D;--wire:#4CC9D3;color-scheme:dark}
+:root[data-theme="dark"]{
+  --paper:#0B1320;
+  --paper-elev:#111C2E;
+  --card:rgba(20,33,54,.82);
+  --card-solid:#142136;
+  --ink:#ECF2FA;
+  --muted:#94A3B8;
+  --line:#233552;
+  --signal:#60A5FA;
+  --signal-soft:rgba(96,165,250,.14);
+  --signal-ink:#07111F;
+  --wire:#2DD4BF;
+  --wire-soft:rgba(45,212,191,.13);
+  --grid-line:rgba(148,163,184,.06);
+  --shadow-sm:0 4px 20px rgba(0,0,0,.25);
+  --shadow-md:0 18px 48px rgba(0,0,0,.38);
+  color-scheme:dark;
 }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B1320;
+    --paper-elev:#111C2E;
+    --card:rgba(20,33,54,.82);
+    --card-solid:#142136;
+    --ink:#ECF2FA;
+    --muted:#94A3B8;
+    --line:#233552;
+    --signal:#60A5FA;
+    --signal-soft:rgba(96,165,250,.14);
+    --signal-ink:#07111F;
+    --wire:#2DD4BF;
+    --wire-soft:rgba(45,212,191,.13);
+    --grid-line:rgba(148,163,184,.06);
+    --shadow-sm:0 4px 20px rgba(0,0,0,.25);
+    --shadow-md:0 18px 48px rgba(0,0,0,.38);
+    color-scheme:dark;
+  }
+}
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  margin:0;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(900px circle at 12% -6%, var(--signal-soft), transparent 60%),
+    radial-gradient(750px circle at 88% 8%, var(--wire-soft), transparent 55%),
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size:100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  color:var(--ink);
+  font:400 1.05rem/1.68 var(--body);
+  -webkit-font-smoothing:antialiased;
+  transition:background-color .25s ease, color .25s ease;
+}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font:800 1.25rem var(--display);text-decoration:none;letter-spacing:-.02em}
-.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.95rem}
-.nav a{text-decoration:none;color:var(--muted)}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Navigation */
+header.nav{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--paper) 82%,transparent);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{
+  font:800 1.35rem var(--display);
+  text-decoration:none;
+  letter-spacing:-.03em;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.logo span{color:var(--signal)}
+.nav-right{display:flex;align-items:center;gap:22px}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.94rem;font-weight:500}
+.nav a{text-decoration:none;color:var(--muted);transition:color .18s ease}
 .nav a:hover{color:var(--ink)}
-section{padding:84px 0 20px}
-h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.025em}
-h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:28px}
+.theme-btn{
+  all:unset;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--card-solid);
+  color:var(--ink);
+  font-size:1rem;
+  box-shadow:var(--shadow-sm);
+  transition:transform .18s ease, border-color .18s ease;
+}
+.theme-btn:hover{transform:translateY(-1px);border-color:var(--signal)}
+
+/* Typography & Sections */
+section{padding:88px 0 16px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.025em}
+.section-kicker{
+  display:inline-block;
+  font:500 .82rem var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--wire);
+  margin-bottom:10px;
+}
+h2{font-size:clamp(1.95rem,4vw,2.65rem);margin-bottom:14px}
+.section-sub{color:var(--muted);margin:0 0 32px;max-width:64ch}
 p{margin:0 0 1em;max-width:68ch}
 .muted{color:var(--muted)}
 
-/* hero */
-.hero{padding-top:72px}
-.hero .grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
-.hero .role{font:500 .95rem var(--mono);color:var(--wire);margin-bottom:18px}
-h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800;margin-bottom:24px}
-.hero .lede{font-size:1.2rem;color:var(--muted)}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 20px}
-.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--signal)}
-.btn.primary{background:var(--signal);color:var(--signal-ink)}
-.btn.ghost{color:var(--signal)}
-.btn:hover{transform:translateY(-1px)}
-.meta{font:400 .92rem var(--mono);color:var(--muted)}
-
-/* layers */
-.layers{display:grid;grid-template-columns:minmax(240px,.8fr) 1.2fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.tabs{display:flex;flex-direction:column;border-right:1px solid var(--line)}
-.tab{all:unset;cursor:pointer;display:flex;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line);font:600 1.05rem var(--display)}
-.tab:last-child{border-bottom:0}
-.tab small{font:400 .8rem var(--mono);color:var(--muted);align-self:center}
-.tab[aria-selected="true"]{background:var(--signal);color:var(--signal-ink)}
-.tab[aria-selected="true"] small{color:inherit;opacity:.85}
-.tab:not([aria-selected="true"]):hover{background:color-mix(in srgb,var(--signal) 10%,transparent)}
-.panel{padding:30px 34px}
-.panel[hidden]{display:none}
-.panel h3{font-size:1.7rem;margin-bottom:12px}
-.panel .tag{font:500 .85rem var(--mono);color:var(--wire);margin-bottom:10px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:18px 0 0}
-.chips li{font:400 .85rem var(--mono);border:1px solid var(--line);padding:4px 10px;border-radius:6px;color:var(--muted)}
-.panel a.link{display:inline-block;margin-top:18px;font-weight:600;color:var(--signal)}
-.more{margin-top:28px}
-.more h3{font-size:1.2rem;margin-bottom:6px}
-
-/* experience */
-.entry{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
-.entry .when{font:400 .9rem var(--mono);color:var(--muted)}
-.entry h3{font-size:1.4rem;margin-bottom:4px}
-.entry .org{color:var(--wire);font-weight:500;margin-bottom:10px}
-.entry ul{margin:10px 0 0;padding-left:20px;color:var(--muted)}
-.entry li{margin-bottom:4px}
-
-/* skills / education */
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px}
-.skill-row{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
-.skill-row b{font-family:var(--display);font-weight:700}
-.skill-row span{color:var(--muted)}
-.list{list-style:none;padding:0;margin:0}
-.list li{padding:12px 0;border-top:1px solid var(--line)}
-.list small{display:block;color:var(--muted)}
-
-/* contact */
-.contact{margin-top:20px;padding:56px 0 64px;border-top:1px solid var(--line)}
-.contact h2{margin-bottom:14px}
-.contact .links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:22px;font-weight:600}
-footer{padding:22px 0 40px;color:var(--muted);font-size:.9rem}
-
-@media (max-width:820px){
-  .layers{grid-template-columns:1fr}
-  .tabs{border-right:0;border-bottom:1px solid var(--line)}
-  .entry{grid-template-columns:1fr;gap:6px}
-  .skill-row{grid-template-columns:1fr;gap:2px}
-  .nav ul{gap:14px;font-size:.88rem}
+/* Hero */
+.hero{padding-top:76px;padding-bottom:24px}
+.status-pill{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:6px 14px;border-radius:999px;
+  background:var(--card-solid);
+  border:1px solid var(--line);
+  font:500 .85rem var(--mono);
+  color:var(--ink);
+  margin-bottom:22px;
+  box-shadow:var(--shadow-sm);
 }
-@media (max-width:520px){.nav ul li:nth-child(n+4){display:none}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+.status-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--wire);
+  box-shadow:0 0 0 4px var(--wire-soft);
+}
+h1{
+  font-size:clamp(2.8rem,7vw,5.1rem);
+  font-weight:800;
+  margin-bottom:20px;
+  background:linear-gradient(120deg, var(--ink) 45%, var(--signal) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .lede{font-size:1.22rem;line-height:1.6;color:var(--muted);max-width:64ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 24px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:12px;
+  font-weight:600;font-size:.96rem;
+  text-decoration:none;
+  border:1.5px solid var(--signal);
+  transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.btn.primary{background:var(--signal);color:var(--signal-ink);box-shadow:0 8px 22px var(--signal-soft)}
+.btn.ghost{background:var(--card-solid);color:var(--signal)}
+.btn.subtle{border-color:var(--line);background:var(--card-solid);color:var(--ink)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.meta-row{
+  display:flex;flex-wrap:wrap;gap:10px 22px;
+  font:400 .9rem var(--mono);
+  color:var(--muted);
+  margin-bottom:36px;
+}
+.meta-row a{text-decoration:none;border-bottom:1px dashed var(--line)}
+.meta-row a:hover{color:var(--signal);border-bottom-color:var(--signal)}
+
+.highlights{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.hi-card{
+  background:var(--card);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 20px;
+  box-shadow:var(--shadow-sm);
+}
+.hi-card small{display:block;font:500 .78rem var(--mono);color:var(--wire);margin-bottom:4px;text-transform:uppercase}
+.hi-card strong{font:700 1.05rem var(--display);display:block}
+
+/* About */
+.about-card{
+  background:var(--card);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:32px 36px;
+  box-shadow:var(--shadow-sm);
+}
+.about-card p:last-child{margin-bottom:0}
+
+/* OSI Layers Interactive Explorer */
+.layers{
+  display:grid;
+  grid-template-columns:minmax(265px,.82fr) 1.18fr;
+  background:var(--card-solid);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow-md);
+}
+.tabs{display:flex;flex-direction:column;border-right:1px solid var(--line);background:var(--paper-elev)}
+.tab{
+  all:unset;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:20px 24px;
+  border-bottom:1px solid var(--line);
+  font:700 1.08rem var(--display);
+  transition:background-color .18s ease, color .18s ease;
+}
+.tab:last-child{border-bottom:0}
+.tab-meta{display:flex;align-items:center;gap:8px}
+.tab small{font:500 .8rem var(--mono);color:var(--muted)}
+.tab .count{
+  font:600 .75rem var(--mono);
+  padding:2px 8px;border-radius:999px;
+  background:var(--signal-soft);
+  color:var(--signal);
+}
+.tab[aria-selected="true"]{background:var(--signal);color:var(--signal-ink)}
+.tab[aria-selected="true"] small{color:inherit;opacity:.88}
+.tab[aria-selected="true"] .count{background:rgba(255,255,255,.22);color:inherit}
+.tab:not([aria-selected="true"]):hover{background:var(--signal-soft)}
+
+.panel{padding:32px 36px;animation:panelFade .25s ease}
+.panel[hidden]{display:none}
+@keyframes panelFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.project-item + .project-item{
+  margin-top:26px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+}
+.panel .tag{font:500 .82rem var(--mono);color:var(--wire);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.panel h3{font-size:1.58rem;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:16px 0 0}
+.chips li{
+  font:500 .82rem var(--mono);
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:4px 11px;border-radius:8px;
+  color:var(--ink);
+}
+.panel a.link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:16px;font-weight:600;color:var(--signal);
+  text-decoration:none;
+}
+.panel a.link:hover{text-decoration:underline}
+
+.milestone-banner{
+  margin-top:24px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 24px;
+  box-shadow:var(--shadow-sm);
+}
+.milestone-banner strong{font-family:var(--display);font-size:1.1rem}
+.milestone-banner span{font:500 .85rem var(--mono);color:var(--wire)}
+
+/* Experience Timeline */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{
+  content:"";position:absolute;left:6px;top:8px;bottom:8px;
+  width:2px;background:var(--line);
+}
+.entry{
+  position:relative;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px 28px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow-sm);
+}
+.entry::before{
+  content:"";position:absolute;left:-25px;top:28px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--signal);
+  border:3px solid var(--paper);
+  box-shadow:0 0 0 2px var(--signal);
+}
+.entry-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.entry h3{font-size:1.35rem}
+.entry .when{font:500 .86rem var(--mono);color:var(--muted)}
+.entry .org{color:var(--wire);font-weight:600;margin-bottom:10px}
+.entry ul{margin:10px 0 0;padding-left:20px;color:var(--muted)}
+.entry li{margin-bottom:5px}
+
+/* Bento Skills, Education, Languages & Interests */
+.bento{display:grid;grid-template-columns:1.15fr .85fr;gap:24px}
+.bento-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:28px 30px;
+  box-shadow:var(--shadow-sm);
+}
+.bento-card h3{font-size:1.35rem;margin-bottom:18px}
+.skill-group{padding:13px 0;border-top:1px solid var(--line)}
+.skill-group:first-of-type{border-top:0;padding-top:0}
+.skill-group:last-of-type{padding-bottom:0}
+.skill-group b{display:block;font-family:var(--display);font-size:.98rem;margin-bottom:8px;color:var(--ink)}
+.pill-list{display:flex;flex-wrap:wrap;gap:7px}
+.pill{
+  font:500 .82rem var(--mono);
+  padding:4px 10px;border-radius:8px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  color:var(--muted);
+}
+.pill.accent{border-color:color-mix(in srgb,var(--signal) 40%,var(--line));color:var(--ink)}
+
+.stack-col{display:flex;flex-direction:column;gap:24px}
+.edu-list{list-style:none;padding:0;margin:0}
+.edu-list li{padding:14px 0;border-top:1px solid var(--line)}
+.edu-list li:first-child{border-top:0;padding-top:0}
+.edu-list li:last-child{padding-bottom:0}
+.edu-list strong{display:block;font-family:var(--display);font-size:1.05rem;margin-bottom:3px}
+.edu-list .sub{display:block;font:500 .84rem var(--mono);color:var(--wire);margin-bottom:5px}
+.edu-list small{display:block;color:var(--muted);line-height:1.5}
+
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lang-box{
+  padding:11px 14px;border-radius:12px;
+  background:var(--paper);border:1px solid var(--line);
+}
+.lang-box strong{display:block;font-family:var(--display);font-size:.98rem}
+.lang-box span{font:500 .8rem var(--mono);color:var(--wire)}
+
+/* Contact */
+.contact-box{
+  margin-top:88px;
+  background:linear-gradient(135deg, var(--card-solid) 0%, color-mix(in srgb,var(--signal) 7%,var(--card-solid)) 100%);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:42px 44px;
+  box-shadow:var(--shadow-md);
+}
+.contact-box h2{margin-bottom:12px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.copy-btn{
+  all:unset;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 20px;border-radius:12px;
+  font-weight:600;font-size:.95rem;
+  background:var(--signal);color:var(--signal-ink);
+  transition:transform .18s ease;
+}
+.copy-btn:hover{transform:translateY(-2px)}
+
+footer{padding:34px 0 48px;color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:860px){
+  .highlights{grid-template-columns:repeat(2,1fr)}
+  .layers,.bento{grid-template-columns:1fr}
+  .tabs{border-right:0;border-bottom:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .nav ul li:nth-child(n+4){display:none}
+  .highlights,.lang-grid{grid-template-columns:1fr}
+  .about-card,.panel,.bento-card,.contact-box{padding:24px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn:hover,.theme-btn:hover,.copy-btn:hover{transform:none}
+  .panel{animation:none}
+}
 </style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
-  <a class="logo" href="#top">HF.</a>
-  <nav aria-label="Main"><ul>
-    <li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#experience">Experience</a></li><li><a href="#skills">Skills</a></li><li><a href="#contact">Contact</a></li>
-  </ul></nav>
+  <a class="logo" href="#top">HF<span>.</span></a>
+  <div class="nav-right">
+    <nav aria-label="Main"><ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle color theme" title="Switch light/dark theme">◐</button>
+  </div>
 </div></header>
 
 <main id="top">
-<section class="hero"><div class="wrap grid">
-  <div>
-    <p class="role">Networks & Telecommunications student</p>
-    <h1>Hussein Fakih</h1>
-    <p class="lede">I work across programming, electronics and network simulation, and I want to understand systems end to end — from the transistor to the routing table.</p>
-    <div class="actions">
-      <a class="btn primary" href="#projects">View projects</a>
-      <a class="btn ghost" href="Hussein_Fakih_CV.pdf" download>Download CV</a>
-    </div>
-    <p class="meta">Saida, Lebanon · hfakih001@gmail.com</p>
+<section class="hero"><div class="wrap">
+  <div class="status-pill"><span class="status-dot"></span> Open to Software Engineering & AI Internships</div>
+  <h1>Hussein Fakih</h1>
+  <p class="lede">3rd-year Bachelor student in Computer Networks and Telecommunications at the Lebanese University. I work across software engineering, AI agents, electronics and network simulation — understanding systems end to end, from the transistor to the routing table.</p>
+  <div class="actions">
+    <a class="btn primary" href="#projects">Explore OSI Stack Projects</a>
+    <a class="btn ghost" href="Hussein_Fakih_CV.pdf" download="Hussein_Fakih_CV.pdf">Download CV (PDF)</a>
+    <a class="btn subtle" href="https://github.com/hfakih001-crypto" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn subtle" href="https://www.linkedin.com/in/hussein-fakih12" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="meta-row">
+    <span>Beirut / Saida, Lebanon</span>
+    <a href="mailto:hfakih001@gmail.com">hfakih001@gmail.com</a>
+    <a href="tel:+96171699139">+961 71 699 139</a>
+  </div>
+
+  <div class="highlights">
+    <div class="hi-card"><small>Degree Track</small><strong>Networks & Telecom (2027)</strong></div>
+    <div class="hi-card"><small>Focus Areas</small><strong>Software Eng. & AI Agents</strong></div>
+    <div class="hi-card"><small>Industry Experience</small><strong>Ogero Telecom Intern</strong></div>
+    <div class="hi-card"><small>Certifications</small><strong>Google MASAR · CCNA · DELF B2</strong></div>
   </div>
 </div></section>
 
 <section id="about"><div class="wrap">
+  <span class="section-kicker">01 // Profile</span>
   <h2>About</h2>
-  <p>I’m a 3rd-year Bachelor student in Computer Networks and Telecommunications at the Lebanese University — Faculty of Technology. I’m looking for an internship to deepen my skills in AI, building on backend and frontend programming, databases, embedded systems and network simulation.</p>
-  <p>This summer I completed a telecommunications internship at Ogero Telecom, working with ADSL/VDSL, WiFi and fiber optic (FTTx) architectures, and researching VoIP, cybersecurity, IoT and AI fundamentals. Outside engineering I practice UCMAS mental arithmetic, learn languages, do karate and running, and enjoy drawing and painting.</p>
+  <div class="about-card">
+    <p>I’m a 3rd-year Bachelor student in Computer Networks and Telecommunications at the Lebanese University — Faculty of Technology. I’m looking for an internship to deepen my skills in Software Engineering and AI, building on backend and frontend programming, AI agents, databases, embedded systems and network simulation.</p>
+    <p>This summer I completed a telecommunications internship at Ogero Telecom, working with ADSL/VDSL, WiFi and fiber optic (FTTx) architectures, and researching VoIP, cybersecurity, IoT and AI fundamentals. Outside engineering I practice UCMAS mental arithmetic, learn languages, do karate and running, and enjoy drawing and painting.</p>
+  </div>
 </div></section>
 
 <section id="projects"><div class="wrap">
+  <span class="section-kicker">02 // Architecture & Builds</span>
   <h2>Projects, layer by layer</h2>
-  <p class="muted">Pick a layer of the stack to see what I built there.</p>
+  <p class="section-sub">Select a layer of the OSI stack to inspect the software, networking, signal processing, and hardware systems I have built.</p>
+
   <div class="layers">
     <div class="tabs" role="tablist" aria-label="Network layers" aria-orientation="vertical">
-      <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true">Application <small>L7</small></button>
-      <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1">Network <small>L3</small></button>
-      <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Data link <small>L2</small></button>
-      <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Signal <small>L1</small></button>
-      <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1">Hardware <small>below L1</small></button>
+      <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true">
+        <span>Application</span>
+        <span class="tab-meta"><span class="count">2</span><small>L7</small></span>
+      </button>
+      <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1">
+        <span>Network</span>
+        <span class="tab-meta"><span class="count">1</span><small>L3</small></span>
+      </button>
+      <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">
+        <span>Data link</span>
+        <span class="tab-meta"><span class="count">1</span><small>L2</small></span>
+      </button>
+      <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">
+        <span>Signal</span>
+        <span class="tab-meta"><span class="count">1</span><small>L1</small></span>
+      </button>
+      <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1">
+        <span>Hardware</span>
+        <span class="tab-meta"><span class="count">3</span><small>below L1</small></span>
+      </button>
     </div>
+
     <div>
+      <!-- L7 Application -->
       <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0">
-        <p class="tag">Software</p>
-        <h3>Real-time Earthquake Monitor</h3>
-        <p>Interactive web app mapping global seismic activity from live USGS API data, with geospatial and magnitude processing, deployed on Firebase.</p>
-        <ul class="chips"><li>Python</li><li>REST API</li><li>Firebase</li></ul>
-        <a class="link" href="https://earthquake-map-955c4.web.app/" target="_blank" rel="noopener">Open the live app</a>
+        <div class="project-item">
+          <p class="tag">Web & Cloud Application</p>
+          <h3>Real-time Earthquake Monitor</h3>
+          <p>Designed an interactive Python web application that maps global seismic activity by retrieving and analyzing live JSON data from the USGS API, with geospatial and magnitude processing, deployed on Firebase Hosting.</p>
+          <ul class="chips"><li>Python</li><li>REST API</li><li>JSON</li><li>Firebase</li></ul>
+          <a class="link" href="https://earthquake-map-955c4.web.app/" target="_blank" rel="noopener">Open the live app ↗</a>
+        </div>
+        <div class="project-item">
+          <p class="tag">Desktop Game Development</p>
+          <h3>Alien Invasion Game</h3>
+          <p>Developed a 2D space shooter game within a Python 3.12 environment utilizing the Pygame library for rendering and event handling. Implemented core game mechanics including collision detection, dynamic scoring, and progressive difficulty levels.</p>
+          <ul class="chips"><li>Python 3.12</li><li>Pygame</li><li>Event-Driven Loop</li><li>Game Physics</li></ul>
+          <a class="link" href="https://github.com/hfakih001-crypto" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
       </div>
+
+      <!-- L3 Network -->
       <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
-        <p class="tag">Networking</p>
-        <h3>Network Simulation Labs</h3>
-        <p>Built and troubleshot LAN/WAN topologies in Cisco Packet Tracer as part of CCNA coursework — addressing and routing.</p>
-        <ul class="chips"><li>Cisco Packet Tracer</li><li>TCP/IP</li><li>Routing</li></ul>
+        <div class="project-item">
+          <p class="tag">Routing & Topology Simulation</p>
+          <h3>Network Simulation Labs</h3>
+          <p>Built and troubleshot multi-subnet LAN/WAN topologies in Cisco Packet Tracer as part of CCNA coursework — IP addressing, static/dynamic routing, and end-to-end packet verification.</p>
+          <ul class="chips"><li>Cisco Packet Tracer</li><li>TCP/IP</li><li>Routing</li><li>CCNA</li></ul>
+        </div>
       </div>
+
+      <!-- L2 Data Link -->
       <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-        <p class="tag">Networking</p>
-        <h3>VLAN segmentation</h3>
-        <p>Part of the same CCNA lab work: splitting LANs into VLANs and verifying traffic between them.</p>
-        <ul class="chips"><li>VLANs</li><li>Switching</li><li>Cisco Packet Tracer</li></ul>
+        <div class="project-item">
+          <p class="tag">Switching & Segmentation</p>
+          <h3>VLAN Segmentation</h3>
+          <p>Part of the CCNA lab work: partitioning local area networks into isolated VLANs, configuring trunk links, and verifying inter-VLAN traffic flow.</p>
+          <ul class="chips"><li>VLANs</li><li>Switching</li><li>802.1Q Trunking</li><li>Cisco Packet Tracer</li></ul>
+        </div>
       </div>
+
+      <!-- L1 Signal -->
       <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
-        <p class="tag">Telecommunications</p>
-        <h3>Signal Processing with MATLAB</h3>
-        <p>Modeled analog and digital communication signals — modulation, sampling and noise behavior.</p>
-        <ul class="chips"><li>MATLAB</li><li>Modulation</li><li>Sampling</li><li>Signal analysis</li></ul>
+        <div class="project-item">
+          <p class="tag">Telecommunications</p>
+          <h3>Signal Processing with MATLAB</h3>
+          <p>Modeled analog and digital communication signals — analyzing modulation schemes, Nyquist sampling, spectral behavior, and channel noise performance.</p>
+          <ul class="chips"><li>MATLAB</li><li>Modulation</li><li>Sampling</li><li>Signal Analysis</li></ul>
+        </div>
       </div>
+
+      <!-- Below L1 Hardware -->
       <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
-        <p class="tag">Embedded systems & electronics</p>
-        <h3>Arduino Robotics</h3>
-        <p>Designed and programmed microcontroller-driven robotics projects with sensors, motor control and serial communication.</p>
-        <ul class="chips"><li>Arduino IDE</li><li>C</li><li>Sensors</li><li>Motor control</li></ul>
-        <div class="more">
+        <div class="project-item">
+          <p class="tag">Digital Hardware Description</p>
+          <h3>Elevator Hoist Control System</h3>
+          <p>Designed an automated hoist (elevator) control system using a Finite State Machine (FSM) modeled in VHDL. Programmed synchronous sequential logic to process real-time hardware inputs, including floor position sensors and command buttons.</p>
+          <ul class="chips"><li>VHDL</li><li>Finite State Machine (FSM)</li><li>Sequential Logic</li><li>Digital Systems</li></ul>
+        </div>
+        <div class="project-item">
+          <p class="tag">Embedded Systems</p>
+          <h3>Arduino Robotics</h3>
+          <p>Designed and programmed microcontroller-driven robotics projects integrating sensors, motor control, and serial communication.</p>
+          <ul class="chips"><li>Arduino IDE</li><li>C</li><li>Sensors</li><li>Motor Control</li></ul>
+        </div>
+        <div class="project-item">
+          <p class="tag">Electronics</p>
           <h3>Digital & Analog Circuit Design</h3>
-          <p>Simulated and validated analog and digital circuits, from logic design to signal behavior, before breadboard implementation.</p>
-          <ul class="chips"><li>Proteus</li><li>MPLAB</li><li>Digital logic</li><li>Analog design</li></ul>
+          <p>Simulated and validated analog and digital circuits, from logic design to signal behavior, prior to physical breadboard implementation.</p>
+          <ul class="chips"><li>Proteus</li><li>MPLAB</li><li>Digital Logic</li><li>Analog Design</li></ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="more" style="margin-top:36px">
-    <h3>GENIUS MAP Regional Competition</h3>
-    <p class="muted">Qualified for the quarter-finals in 2018.</p>
+
+  <div class="milestone-banner">
+    <div>
+      <strong>GENIUS MAP Regional Competition</strong>
+      <p class="muted" style="margin:2px 0 0">Qualified for the regional quarter-finals in mental mathematics & problem solving.</p>
+    </div>
+    <span>2018 Quarter-Finalist</span>
   </div>
 </div></section>
 
 <section id="experience"><div class="wrap">
-  <h2>Experience</h2>
-  <article class="entry">
-    <div class="when">July – September 2026</div>
-    <div>
-      <h3>Telecommunications Intern</h3>
-      <p class="org">Ogero Telecom, Saida</p>
-      <p>Hands-on internship covering telecommunications infrastructure, network deployment and emerging technologies.</p>
+  <span class="section-kicker">03 // Track Record</span>
+  <h2>Experience & Leadership</h2>
+  <div class="timeline">
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Telecommunications Intern</h3>
+        <span class="when">July – September 2026</span>
+      </div>
+      <p class="org">Ogero Telecom · Saida, Lebanon</p>
+      <p>Hands-on internship covering telecommunications & IT infrastructure, network deployment, and emerging technologies.</p>
       <ul>
-        <li>Analyzed network deployment including ADSL/VDSL, WiFi and fiber optic (FTTx) architectures.</li>
-        <li>Researched the fundamentals of VoIP, cybersecurity, IoT and artificial intelligence.</li>
-        <li>Conducted schematic mapping and site evaluations with technical teams across physical and logical layers of data transmission.</li>
+        <li>Gained practical experience in network deployment focusing on ADSL/VDSL, WiFi, and fiber optic (FTTx) architectures.</li>
+        <li>Researched the fundamentals of emerging technologies including VoIP, cybersecurity, IoT, and artificial intelligence.</li>
+        <li>Conducted site evaluations and schematic mapping with technical teams to analyze physical and logical layers of data transmission.</li>
       </ul>
-    </div>
-  </article>
-  <article class="entry">
-    <div class="when">Community work</div>
-    <div>
-      <h3>Volunteer DJ & Event Support</h3>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Volunteer Assistant, DJ & Event Support</h3>
+        <span class="when">Community Involvement</span>
+      </div>
       <p class="org">Aitaroun Municipality Cultural Center</p>
-      <ul><li>Ran audio setup and live mixing for community events.</li><li>Coordinated with organizers on event flow and technical needs.</li></ul>
-    </div>
-  </article>
-  <article class="entry">
-    <div class="when">Workshops</div>
-    <div>
-      <h3>Workshop Facilitation</h3>
+      <ul>
+        <li>Served as event assistant supporting community cultural programs and logistics.</li>
+        <li>Ran audio setup and live mixing for community events, coordinating with organizers on flow and technical needs.</li>
+      </ul>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Workshop Facilitation</h3>
+        <span class="when">NGO Leadership</span>
+      </div>
       <p class="org">NAHNOO NGO · ABAAD NGO</p>
-      <ul><li>Teamwork and life skills — NAHNOO.</li><li>Managing situations of sexual harassment against women — ABAAD.</li></ul>
-    </div>
-  </article>
-  <article class="entry">
-    <div class="when">Grade 11</div>
-    <div>
-      <h3>Class Delegate, elected</h3>
+      <ul>
+        <li>Facilitated sessions on <em>“Teamwork and life skills”</em> with NAHNOO NGO.</li>
+        <li>Facilitated sessions on <em>“Managing situations of sexual harassment against women”</em> with ABAAD NGO.</li>
+      </ul>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Class Delegate (Elected)</h3>
+        <span class="when">Grade 11</span>
+      </div>
       <p class="org">Bint Jbeil Official High School</p>
-      <ul><li>Acted as the main channel between students and teaching staff.</li><li>Organized class scheduling and study coordination.</li></ul>
-    </div>
-  </article>
+      <ul>
+        <li>Acted as the main communication channel between students and teaching staff.</li>
+        <li>Organized class scheduling and peer study coordination.</li>
+      </ul>
+    </article>
+  </div>
 </div></section>
 
 <section id="skills"><div class="wrap">
-  <h2>Skills & background</h2>
-  <div class="cols">
-    <div>
-      <div class="skill-row"><b>AI & Data</b><span>Python</span></div>
-      <div class="skill-row"><b>Backend</b><span>Python, C#, VB.NET</span></div>
-      <div class="skill-row"><b>Frontend</b><span>HTML/CSS, JavaScript</span></div>
-      <div class="skill-row"><b>Databases</b><span>MySQL, SQL Server</span></div>
-      <div class="skill-row"><b>Tools</b><span>Git, GitHub, Linux</span></div>
-      <div class="skill-row"><b>Low-level</b><span>C, Assembly, VHDL, Arduino</span></div>
-      <div class="skill-row"><b>Platforms</b><span>VS Code, Visual Studio, Arduino IDE, Cisco Packet Tracer, MPLAB, Proteus, MATLAB</span></div>
+  <span class="section-kicker">04 // Capabilities & Credentials</span>
+  <h2>Skills & Background</h2>
+  <div class="bento">
+    <div class="bento-card">
+      <h3>Technical Stack</h3>
+      <div class="skill-group">
+        <b>AI & Agents</b>
+        <div class="pill-list">
+          <span class="pill accent">AI Agents</span>
+          <span class="pill accent">Prompt Engineering</span>
+          <span class="pill accent">Function Calling</span>
+          <span class="pill accent">RAG (Fundamentals)</span>
+          <span class="pill">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <b>Backend & Core Programming</b>
+        <div class="pill-list">
+          <span class="pill accent">Python</span>
+          <span class="pill">PHP</span>
+          <span class="pill">Java</span>
+          <span class="pill">C#</span>
+          <span class="pill">VB.NET</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <b>Frontend & Web</b>
+        <div class="pill-list">
+          <span class="pill">HTML/CSS</span>
+          <span class="pill">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <b>Databases</b>
+        <div class="pill-list">
+          <span class="pill">MySQL</span>
+          <span class="pill">SQL Server</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <b>Low-Level & Embedded Systems</b>
+        <div class="pill-list">
+          <span class="pill">C</span>
+          <span class="pill">Assembly</span>
+          <span class="pill accent">VHDL</span>
+          <span class="pill">Arduino</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <b>Cloud, DevOps & Engineering Platforms</b>
+        <div class="pill-list">
+          <span class="pill accent">Google Cloud Platform (GCP)</span>
+          <span class="pill accent">Google Antigravity</span>
+          <span class="pill">Git & GitHub</span>
+          <span class="pill">Linux</span>
+          <span class="pill">VS Code</span>
+          <span class="pill">Visual Studio</span>
+          <span class="pill">Cisco Packet Tracer</span>
+          <span class="pill">MATLAB</span>
+          <span class="pill">MPLAB</span>
+          <span class="pill">Proteus</span>
+          <span class="pill">Arduino IDE</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <ul class="list">
-        <li>Bachelor’s in Computer Networks and Telecommunications<small>Lebanese University, Faculty of Technology · 2024–2027</small></li>
-        <li>Lebanese Baccalaureate, General Sciences<small>Bint Jbeil Official High School · 2024</small></li>
-        <li>Certifications<small>MASAR by Google (AI) · CCNA · Linux · Arduino Robotics · DELF B2</small></li>
-        <li>Languages<small>Arabic (native) · French (DELF B2) · English (advanced) · Italian (beginner)</small></li>
-      </ul>
+
+    <div class="stack-col">
+      <div class="bento-card">
+        <h3>Education</h3>
+        <ul class="edu-list">
+          <li>
+            <strong>Bachelor’s Degree in Computer Networks and Telecommunications</strong>
+            <span class="sub">Lebanese University, Faculty of Technology · 09/2024 – 06/2027</span>
+            <small>Core courses: Algorithms, Databases, Full Stack, Web Development, Telecommunications, Electronics.</small>
+          </li>
+          <li>
+            <strong>Lebanese Baccalaureate — General Sciences Option</strong>
+            <span class="sub">Bint Jbeil Official High School · 2024</span>
+            <small>Majors: Pure and Applied Mathematics, Physics-Chemistry.</small>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bento-card">
+        <h3>Courses & Certifications</h3>
+        <div class="pill-list">
+          <span class="pill accent">MASAR by Google (Cloud & AI Agents)</span>
+          <span class="pill">CCNA</span>
+          <span class="pill">Linux</span>
+          <span class="pill">Arduino Robotics</span>
+          <span class="pill">DELF B2</span>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <h3>Languages</h3>
+        <div class="lang-grid">
+          <div class="lang-box"><strong>Arabic</strong><span>Native</span></div>
+          <div class="lang-box"><strong>French</strong><span>Advanced · DELF B2</span></div>
+          <div class="lang-box"><strong>English</strong><span>Advanced</span></div>
+          <div class="lang-box"><strong>Italian</strong><span>Beginner</span></div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <h3>Interests</h3>
+        <div class="pill-list">
+          <span class="pill">UCMAS (Japanese mental arithmetic)</span>
+          <span class="pill">Learning new languages</span>
+          <span class="pill">Karate</span>
+          <span class="pill">Running</span>
+          <span class="pill">Drawing & painting</span>
+        </div>
+      </div>
     </div>
   </div>
 </div></section>
 </main>
 
-<div class="wrap contact" id="contact">
-  <h2>Let’s talk</h2>
-  <p>I’m open to AI-focused internships and engineering opportunities. The fastest way to reach me is email.</p>
-  <div class="links">
-    <a href="mailto:hfakih001@gmail.com">hfakih001@gmail.com</a>
-    <a href="tel:+96171699139">+961 71 699 139</a>
-    <a href="https://www.linkedin.com/in/hussein-fakih12" target="_blank" rel="noopener">LinkedIn</a>
+<div class="wrap">
+  <div class="contact-box" id="contact">
+    <span class="section-kicker">05 // Connect</span>
+    <h2>Let’s build something together</h2>
+    <p class="muted">I’m open to Software Engineering and AI internships as well as engineering collaborations. Reach out directly by email or connect on GitHub and LinkedIn.</p>
+    <div class="contact-actions">
+      <button class="copy-btn" id="copyEmail" type="button" data-email="hfakih001@gmail.com">Copy hfakih001@gmail.com</button>
+      <a class="btn ghost" href="mailto:hfakih001@gmail.com">Send Email</a>
+      <a class="btn subtle" href="tel:+96171699139">+961 71 699 139</a>
+      <a class="btn subtle" href="https://github.com/hfakih001-crypto" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn subtle" href="https://www.linkedin.com/in/hussein-fakih12" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
   </div>
+
+  <footer>
+    <span>© 2026 Hussein Fakih. All rights reserved.</span>
+    <span>Beirut / Saida, Lebanon</span>
+  </footer>
 </div>
-<footer><div class="wrap">© 2026 Hussein Fakih. All rights reserved.</div></footer>
 
 <script>
 (function(){
+  /* OSI Layer Tabs */
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   function select(i){
     tabs.forEach(function(t,j){
@@ -283,6 +771,36 @@ footer{padding:22px 0 40px;color:var(--muted);font-size:.9rem}
       if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();select((i+1)%tabs.length)}
       if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();select((i-1+tabs.length)%tabs.length)}
     });
+  });
+
+  /* Light / Dark Theme Toggle */
+  var root=document.documentElement;
+  var toggle=document.getElementById('themeToggle');
+  var saved=localStorage.getItem('hf-theme');
+  if(saved){root.setAttribute('data-theme',saved)}
+  function updateIcon(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&window.matchMedia('(prefers-color-scheme:dark)').matches);
+    toggle.textContent=dark?'☀':'☾';
+  }
+  updateIcon();
+  toggle.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&window.matchMedia('(prefers-color-scheme:dark)').matches);
+    var next=dark?'light':'dark';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('hf-theme',next);
+    updateIcon();
+  });
+
+  /* One-Click Copy Email */
+  var copyBtn=document.getElementById('copyEmail');
+  copyBtn.addEventListener('click',function(){
+    var email=copyBtn.getAttribute('data-email');
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(email).then(function(){
+        copyBtn.textContent='Copied: '+email;
+        setTimeout(function(){copyBtn.textContent='Copy '+email},2200);
+      });
+    }
   });
 })();
 </script>
